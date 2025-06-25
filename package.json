@@ -1,0 +1,20 @@
+{
+  "name": "beedom",
+  "version": "1.0.0",
+  "description": "> A lightweight, beginner-friendly DOM utility library to simplify element creation, manipulation, styling, and event handling in pure HTML/CSS/JS — **no dependencies**, **no build step**.",
+  "main": "index.js",
+  "directories": {
+    "example": "examples"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "dev": "rollup -c -w",
+    "build": "rollup -c"
+  },
+  "keywords": [],
+  "author": "BigMouse",
+  "license": "ISC",
+  "devDependencies": {
+    "rollup": "^4.44.0"
+  }
+}

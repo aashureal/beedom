@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Beedom Demo</title>
+  </head>
+  <body>
+    <div id="app"></div>
+
+    <script type="module" src="../dist/beedom.js"></script>
+    <script type="module">
+      import DOM from "../dist/beedom.js";
+
+      const el = DOM.create("h1")
+        .text("Hello Beedom!")
+        .styles({ color: "green", fontSize: "2rem" })
+        .appendTo("#app");
+    </script>
+  </body>
+</html>
