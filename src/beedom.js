@@ -135,7 +135,9 @@ class Beedom {
   }
 
   queryAll(selector) {
-    return Array.from(this.document.querySelectorAll(selector)).map(el => this.wrap(el));
+    return Array.from(this.document.querySelectorAll(selector)).map((el) =>
+      this.wrap(el)
+    );
   }
 
   create(tag) {
@@ -148,7 +150,7 @@ class Beedom {
 
   clear(selector) {
     const el = this.document.querySelector(selector);
-    if (el) el.innerHTML = '';
+    if (el) el.innerHTML = "";
     return this.wrap(el);
   }
 
@@ -175,7 +177,7 @@ class BeedomElement {
   }
 
   styles(styleObj) {
-    if (typeof this.el.styler === 'function') {
+    if (typeof this.el.styler === "function") {
       this.el.styler(styleObj);
     } else {
       Object.assign(this.el.style, styleObj);
@@ -200,12 +202,12 @@ class BeedomElement {
   }
 
   addClass(cls) {
-    this.el.classList.add(...cls.split(' '));
+    this.el.classList.add(...cls.split(" "));
     return this;
   }
 
   removeClass(cls) {
-    this.el.classList.remove(...cls.split(' '));
+    this.el.classList.remove(...cls.split(" "));
     return this;
   }
 
@@ -221,21 +223,23 @@ class BeedomElement {
   }
 
   appendTo(target) {
-    const parent = target instanceof BeedomElement
-      ? target.el
-      : (typeof target === 'string'
+    const parent =
+      target instanceof BeedomElement
+        ? target.el
+        : typeof target === "string"
         ? document.querySelector(target)
-        : target);
+        : target;
     parent.appendChild(this.el);
     return this;
   }
 
   prependTo(target) {
-    const parent = target instanceof BeedomElement
-      ? target.el
-      : (typeof target === 'string'
+    const parent =
+      target instanceof BeedomElement
+        ? target.el
+        : typeof target === "string"
         ? document.querySelector(target)
-        : target);
+        : target;
     parent.insertBefore(this.el, parent.firstChild);
     return this;
   }
@@ -250,7 +254,7 @@ class BeedomElement {
   }
 
   clear() {
-    this.el.innerHTML = '';
+    this.el.innerHTML = "";
     return this;
   }
 
@@ -270,23 +274,31 @@ class BeedomElement {
   }
 
   findAll(selector) {
-    return Array.from(this.el.querySelectorAll(selector)).map(el => new BeedomElement(el));
+    return Array.from(this.el.querySelectorAll(selector)).map(
+      (el) => new BeedomElement(el)
+    );
   }
 
   parent() {
-    return this.el.parentElement ? new BeedomElement(this.el.parentElement) : null;
+    return this.el.parentElement
+      ? new BeedomElement(this.el.parentElement)
+      : null;
   }
 
   children() {
-    return Array.from(this.el.children).map(el => new BeedomElement(el));
+    return Array.from(this.el.children).map((el) => new BeedomElement(el));
   }
 
   next() {
-    return this.el.nextElementSibling ? new BeedomElement(this.el.nextElementSibling) : null;
+    return this.el.nextElementSibling
+      ? new BeedomElement(this.el.nextElementSibling)
+      : null;
   }
 
   prev() {
-    return this.el.previousElementSibling ? new BeedomElement(this.el.previousElementSibling) : null;
+    return this.el.previousElementSibling
+      ? new BeedomElement(this.el.previousElementSibling)
+      : null;
   }
 
   insertBefore(target) {
@@ -310,3 +322,8 @@ class BeedomElement {
 
 const DOM = new Beedom();
 export default DOM;
+
+// ✅ Global exposure for <script src="..."> usage
+if (typeof window !== "undefined") {
+  window.DOM = DOM;
+}
