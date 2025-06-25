@@ -323,7 +323,7 @@ class BeedomElement {
 const DOM = new Beedom();
 export default DOM;
 
-// ✅ Global exposure for <script src="..."> usage
+// ✅ Make DOM globally available when used via CDN
 if (typeof window !== "undefined") {
   window.DOM = DOM;
 }
