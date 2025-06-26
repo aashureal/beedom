@@ -318,6 +318,24 @@ class BeedomElement {
     t.parentNode.insertBefore(this.el, t);
     return this;
   }
+
+  hasClass(cls) {
+    return this.el.classList.contains(cls);
+  }
+
+  isHidden() {
+    return (
+      this.el.style.display === "none" || this.el.classList.contains("hidden")
+    );
+  }
+
+  isVisble() {
+    return !this.isHidden();
+  }
+
+  get() {
+    return this.el;
+  }
 }
 
 const DOM = new Beedom();
